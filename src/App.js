@@ -1,24 +1,41 @@
+import * as React from "react";
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
+import Login from "./Login";
+import WebTask from "./Web-Task";
+import Location from "./Location";
+import Reminder from "./Reminder";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login/>
+  },
+  {
+    path: "/tasks",
+    element: <WebTask/>
+  },
+  {
+    path: "/location",
+    element: <Location/>
+  },
+  {
+    path: "/reminder",
+    element: <Reminder/>
+  },
+]);
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
